@@ -97,6 +97,10 @@ public class database {
 		} catch(IOException e) {
 			e.getMessage();
 		}
+		
+		for(int i = 0; i < pos; i++) {
+			valid[i] = true;
+		}
 	}
 	
 	public void save(File f){
@@ -156,6 +160,14 @@ public class database {
 			gaplist.add(index);
 			gaps = true;
 			return true;
+		}
+	}
+
+	public String[] getLine(int index) throws Exception{
+		if(index >= pos || !valid[index]) {
+			throw new IllegalArgumentException("your index is not valid");
+		} else {
+			return arr[index];
 		}
 	}
 }
